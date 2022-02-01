@@ -7,6 +7,57 @@ $valor2 =(double) 0;
 $resultado =(double) 0;
 $opcao =(string) null;
 
+function double operacaoMatematica($numero1, $numero2, $operacao)
+{
+    //declaraçao de variaveis locais da funçao (todas as variaveis recebem os dados 
+    //do parametro do parametro da function)
+    $num1 =(double) $numero1; 
+    $num2 =(double) $numero2; 
+
+    $tipoCalc =(double) $operacao;
+    $result=(double) 0;
+
+    switch($tipoCalc)
+    {
+
+        case("SOMAR"):
+
+            $result = $num1 + $num2;
+
+        break;
+
+        case("SUBTRAIR"):
+            
+            $result = $num1 - $num2;
+
+        break;
+
+        case("MULTIPLICAR"):
+
+            $result = $num1 * $num2;
+
+        break;
+            
+        case("DIVIDIR"):   
+            
+            if($num2 == 0)
+
+                echo('<script> alert ("nao é possivel realizar uma divisao onde o valor 2 seja igual a zero")</script>');
+
+            else
+
+            $result = $num1 / $num2;
+
+        break;
+                
+    }
+
+
+    $result = round($result, 2);
+    return $result;
+    
+}
+
 /*
 
     gettype() -> permite verificar qual o tipo de dados de uma variavel
@@ -64,56 +115,26 @@ if(isset($_POST['btnCalc'])){
                     {
 
                         $opcao = strtoupper($_POST['rdoCalc']);
+
+                        //chamada de funçao de calculos matemticos, passamos os valores
+                        //e o tipo da operaçao recebemos o valor do resultado 
+                        $resultado = operacaoMatematica($valor1, $valor2, $opcao);
                         
  
-                        switch($opcao)
-                        {
-
-                            case("SOMAR"):
-
-                                $resultado = $valor1 + $valor2;
-
-                            break;
-
-                            case("SUBTRAIR"):
-                                
-                                $resultado = $valor1 - $valor2;
-
-                            break;
-
-                            case("MULTIPLICAR"):
-
-                                $resultado = $valor1 * $valor2;
-
-                            break;
-                                
-                            case("DIVIDIR"):   
-                                
-                                if($valor2 == 0)
-
-                                    echo('<script> alert ("nao é possivel realizar uma divisao onde o valor 2 seja igual a zero")</script>');
-
-                                else
-
-                                $resultado = $valor1 / $valor2;
-
-                            break;
-                                    
-                        }
-                        
+                       
 
                         //processamento do calculo das operaçoes
                         /*if($opcao == 'SOMAR') 
 
-                            $resultado = $valor1 + $valor2;
+                             = $valor1 + $valor2;
 
                         else if ($opcao == 'SUBTRAIR')
 
-                            $resultado = $valor1 - $valor2;
+                             = $valor1 - $valor2;
 
                         else if ($opcao == 'MULTIPLICAR')
 
-                            $resultado = $valor1 * $valor2;
+                             = $valor1 * $valor2;
 
                         else if ($opcao == 'DIVIDIR')
 
@@ -124,11 +145,11 @@ if(isset($_POST['btnCalc'])){
                              
                             else
                             
-                                 $resultado = $valor1 / $valor2;
+                                  = $valor1 / $valor2;
                         }*/
 
                             //round() -> permite ajustar a quantidade de casas decimais realizando o arredondamento
-                            //$resultado = round($resultado, 5);
+                            // = round(, 5);
                             //4resultado_format -> permite ajustar a quantiade de casa decimais realizando o arredondamento
                 
                     }
@@ -159,16 +180,16 @@ if(isset($_POST['btnCalc'])){
 						Valor 1:<input type="text" name="txtn1" value="<?=$valor1;?>" > <br>
 						Valor 2:<input type="text" name="txtn2" value="<?=$valor2;?>" > <br>
 						<div id="container_opcoes">
-							<input type="radio" name="rdoCalc" value="somar">Somar <br>
-							<input type="radio" name="rdoCalc" value="subtrair" <?=$chkSubrair;?> >Subtrair <br>
+							<input type="radio" name="rdoCalc" value="somar">Somar <?=$opcao == 'SOMARR' ? 'checked' : null; ?> <br>
+							<input type="radio" name="rdoCalc" value="subtrair" <?=$opcao == 'SUBTRAIR' ? 'checked' : null; ?> >Subtrair <br>
 							<input type="radio" name="rdoCalc" value="multiplicar" <?=$opcao == 'MULTIPLICAR' ? 'checked' : null; ?> >Multiplicar <br>
-							<input type="radio" name="rdoCalc" value="dividir" >Dividir <br>
+							<input type="radio" name="rdoCalc" value="dividir" <?=$opcao == 'DIVIDIR' ? 'checked' : null; ?> >Dividir <br>
 							
 							<input type="submit" name="btnCalc" value ="Calcular" >
 							
 						</div>	
-						<div id="resultado">
-						 <?=$resultado;?>
+						<div id=">
+						 <?=;?>
 						</div>
 						
 					</form>
