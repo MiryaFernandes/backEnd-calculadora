@@ -1,87 +1,24 @@
 <?php
 
-//declaraçao de variveis
 
-$valor1 =(double) 0;
-$valor2 =(double) 0;
-$resultado =(double) 0;
-$opcao =(string) null;
-
-function double operacaoMatematica($numero1, $numero2, $operacao)
-{
-    //declaraçao de variaveis locais da funçao (todas as variaveis recebem os dados 
-    //do parametro do parametro da function)
-    $num1 =(double) $numero1; 
-    $num2 =(double) $numero2; 
-
-    $tipoCalc =(double) $operacao;
-    $result=(double) 0;
-
-    switch($tipoCalc)
-    {
-
-        case("SOMAR"):
-
-            $result = $num1 + $num2;
-
-        break;
-
-        case("SUBTRAIR"):
-            
-            $result = $num1 - $num2;
-
-        break;
-
-        case("MULTIPLICAR"):
-
-            $result = $num1 * $num2;
-
-        break;
-            
-        case("DIVIDIR"):   
-            
-            if($num2 == 0)
-
-                echo('<script> alert ("nao é possivel realizar uma divisao onde o valor 2 seja igual a zero")</script>');
-
-            else
-
-            $result = $num1 / $num2;
-
-        break;
-                
-    }
+//include ou require -> permitem fazer a importaçao de arquivos no php
+//utilizando a opçao com _once, o servidor realiza uma restriçao para
+//importar somente uma vez o arquivo (melhor opçao)
 
 
-    $result = round($result, 2);
-    return $result;
-    
-}
+//include()
+//include_once()
 
-/*
+//require()
+//require_once()
 
-    gettype() -> permite verificar qual o tipo de dados de uma variavel
-    settype() -> permite modificar p tipo de dados de uma variavel 
+//declaracao de variavel
 
-*/
-
-/*
-    exemplo de uma variavel que nasce do tipo inteiro e depois é
-    convertida para string
-
-    $nome = 10;
-
-    echo(gettype($nome));
-
-    settype($nome, "string");
-
-    echo(gettype($nome));
-
-    strtoupper() -> permite converter um texto para maiusculo
-    strtolower() -> permite converter um texto para maiusculo
-
-*/
-//validaçao pra verificar se o botao foi clicado
+require_once('modulo/calculos.php');
+$valor1 = (double) 0;
+$valor2 = (double) 0;
+$resultado = (double) 0;
+$opcao = (string) null;
 
 if(isset($_POST['btnCalc'])){
 
@@ -188,8 +125,9 @@ if(isset($_POST['btnCalc'])){
 							<input type="submit" name="btnCalc" value ="Calcular" >
 							
 						</div>	
-						<div id=">
-						 <?=;?>
+						<div id="resultado">
+							<?=$resultado;?>
+						 
 						</div>
 						
 					</form>
